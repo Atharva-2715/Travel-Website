@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: url("hero.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Roboto Mono", monospace;
+  color: #fff; /* Ensures text is readable */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  position: absolute; /* or fixed if you want it to stay on scroll */
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent; /* subtle translucent background */
+  backdrop-filter: blur(10px); /* glass effect */
+  border: none;
+  box-shadow: none;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+
+  border-radius: 8px;
+  gap: 10px;
+}
+
+.title h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.plane-icon {
+  color: #f0f4f8; /* Matches the text color */
+  transition: transform 0.3s ease;
+}
+
+.title:hover .plane-icon {
+  transform: translateX(-4px);
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.items ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+}
+
+.items ul li {
+  display: inline-block;
+}
+
+.items ul li button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.items ul li button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.items ul li button:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  max-width: 300px;
+  border-radius: 99px;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.search-input::placeholder {
+  color: #ffffffaa;
+}
+
+.search-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffffcc;
+  transition: transform 0.2s ease;
+}
+
+.search-button:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.clear-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffffcc;
+  transition: transform 0.2s ease;
+}
+
+.clear-btn:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.title h1,
+.nav-items li button {
+  color: #fff;
+}
