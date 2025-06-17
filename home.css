@@ -10,6 +10,7 @@ body {
   background-size: cover;
   font-family: "Roboto Mono", monospace;
   color: #fff; /* Ensures text is readable */
+  overflow: hidden;
 }
 
 .navbar {
@@ -152,3 +153,41 @@ body {
 .nav-items li button {
   color: #fff;
 }
+
+.social-bar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    margin-left:4% ;
+    gap:40px;
+  }
+  
+  .vertical-line {
+    width: 2px;
+    height: 290px;
+    background-color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 12px;
+  }
+  
+  .social-icons a {
+    margin-bottom: 20px;
+    display: block;
+    
+  }
+  
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* makes dark logos white-ish */
+    transition: transform 0.3s ease;
+  }
+  
+  .social-icons img:hover {
+    transform: scale(1.2);
+  }
+  
