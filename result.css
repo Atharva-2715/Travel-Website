@@ -11,7 +11,7 @@ body {
     background-size: cover;
     font-family: "Roboto Mono", monospace;
     color: #fff;
-    overflow-x: hidden;
+   scroll-behavior: smooth;
     min-height: 100vh;
 }
 
@@ -198,53 +198,44 @@ body {
     transform: scale(1.2);
     fill: #fff;
 }
-
-.right-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 8%;
-    margin-left: 20%;
-    z-index: 10;
-    text-align: left;
-    transform: translateY(-25%);
-}
-
-.headings {
-    margin-top: 45%;
-    margin-bottom: 40px;
-}
-
-.headings h1 {
-    font-size: 48px;
-    font-weight: 700;
+.results-section {
+    padding: 120px 40px 40px 40px; /* enough padding to clear navbar */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .results-heading {
+    font-size: 36px;
+    margin-bottom: 24px;
     color: #fff;
-    margin: 0;
-    line-height: 1.2;
-    margin-top: 0;
-}
-
-.info {
-    animation: fadeInUp 1s ease-out 0.5s forwards;
-    position: relative;
-    top: -20px;
-    opacity: 0;
-}
-
-.info p {
-    font-size: 18px;
-    font-weight: 500;
-    color: #ffffffcc;
-    line-height: 1.6;
-    max-width: 600px;
-}
-
+    text-align: center;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 24px;
+    margin-left: 5%;
+  }
+  
+  .result-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .result-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .result-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -286,3 +277,18 @@ body {
         font-size: 36px;
     }
 }
+
+
+.result-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .result-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }

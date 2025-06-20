@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Recommendation</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("hero.jpg");
+        background-size: cover;
+        font-family: "Roboto Mono", monospace;
+        color: #fff;
+        overflow: hidden;
+        min-height: 100vh;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 32px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        background: transparent;
+        backdrop-filter: blur(10px);
+        gap: 77px;
+        box-sizing: border-box;
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .title h1 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+      }
+
+      .plane-icon {
+        width: 24px;
+        height: 24px;
+        color: #f0f4f8;
+        transition: transform 0.3s ease;
+      }
+
+      .title:hover .plane-icon {
+        transform: translateX(-4px);
+      }
+
+      .items {
+        display: flex;
+        justify-content: flex-end;
+        min-width: 0;
+      }
+
+      .items ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .items ul li {
+        display: inline-block;
+      }
+
+      /* Updated CSS for anchor tags - FIXED VERSION */
+      .items ul li a {
+        padding: 8px 20px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff !important;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid transparent;
+      }
+
+      .items ul li a:hover {
+        background: rgba(255, 255, 255, 0.4) !important;
+        color: #000 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .items ul li a:focus {
+        outline: 2px solid #fff;
+        outline-offset: 2px;
+      }
+
+      .items ul li a:active {
+        transform: translateY(-1px);
+      }
+
+      .social-bar {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+        margin-left: 4%;
+        gap: 40px;
+      }
+
+      .vertical-line {
+        width: 2px;
+        height: 290px;
+        background-color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 12px;
+      }
+
+      .social-icons a {
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .social-icons svg {
+        width: 24px;
+        height: 24px;
+        fill: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+      }
+
+      .social-icons svg:hover {
+        transform: scale(1.2);
+        fill: #fff;
+      }
+
+      .right-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 8%;
+        margin-left: 20%;
+        z-index: 10;
+        text-align: left;
+        transform: translateY(-25%);
+      }
+
+      .headings {
+        margin-top: 45%;
+        margin-bottom: 40px;
+      }
+
+      .headings h1 {
+        font-size: 60px;
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        line-height: 1.2;
+        margin-top: 0;
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 12px;
+          padding: 12px 16px;
+        }
+
+        .title,
+        .items,
+        .search-bar {
+          flex: none;
+          width: 100%;
+        }
+
+        .items {
+          justify-content: center;
+        }
+
+        .search-bar {
+          justify-content: center;
+        }
+
+        .right-container {
+          width: 90%;
+          margin-left: 5%;
+        }
+
+        .headings h1 {
+          font-size: 36px;
+        }
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin-left: 0;
+        margin-bottom: 20%;
+        gap: 20px; /* Add spacing between form elements */
+      }
+
+      .contact-form label {
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .contact-form input[type="text"],
+      .contact-form textarea {
+        padding: 12px 16px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .contact-form input[type="text"]:focus,
+      .contact-form textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+      }
+
+      .contact-form input[type="submit"] {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-form input[type="submit"]:hover {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="title">
+        <svg
+          class="plane-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+          />
+        </svg>
+        <h1>Travel Bloom</h1>
+      </div>
+
+      <div class="items">
+        <ul>
+          <li>
+            <a href="home.html" 
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="AboutUs.html">About Us</a>
+          </li>
+          <li>
+            <a href="conatctUs.html">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <div class="social-bar">
+        <div class="vertical-line"></div>
+        <div class="social-icons">
+          <a href="https://instagram.com" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a href="https://x.com/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="headings">
+          <h1>Contact Us</h1>
+        </div>
+
+        <div class="contact-form">
+          <form>
+            <label for="fname">First Name</label>
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              placeholder="Your first name.."
+              required
+            />
+
+            <label for="lname">Last Name</label>
+            <input
+              type="text"
+              id="lname"
+              name="lastname"
+              placeholder="Your last name.."
+            />
+
+            <label for="subject">Subject</label>
+            <textarea
+              id="subject"
+              name="subject"
+              placeholder="Write something.."
+              style="height: 200px"
+            ></textarea>
+
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleNavClick(section) {
+        alert(`${section} clicked!`);
+        console.log(`Navigation: ${section}`);
+        // You can add more functionality here
+      }
+
+      function handleSearch(event) {
+        event.preventDefault();
+        const searchInput = document.querySelector(".search-input");
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm) {
+          alert(`Searching for: ${searchTerm}`);
+          console.log(`Search term: ${searchTerm}`);
+          // Here you would typically handle the search functionality
+        }
+      }
+
+      function clearSearch() {
+        const searchInput = document.querySelector(".search-input");
+        searchInput.value = "";
+        searchInput.focus();
+      }
+
+      // Add some interactivity to the social icons
+      document.querySelectorAll(".social-icons a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const platform = this.href.includes("instagram")
+            ? "Instagram"
+            : this.href.includes("x.com")
+            ? "X (Twitter)"
+            : this.href.includes("facebook")
+            ? "Facebook"
+            : "YouTube";
+          alert(`Opening ${platform}...`);
+          // In a real application, you would open the actual links
+          // window.open(this.href, '_blank');
+        });
+      });
+
+      // Test hover functionality on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("Page loaded. Testing hover functionality...");
+
+        // Add event listeners to test hover
+        const navLinks = document.querySelectorAll(".items ul li a");
+        navLinks.forEach((link) => {
+          link.addEventListener("mouseenter", function () {
+            console.log("Hover started on:", this.textContent);
+          });
+
+          link.addEventListener("mouseleave", function () {
+            console.log("Hover ended on:", this.textContent);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
